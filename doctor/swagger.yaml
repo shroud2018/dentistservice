@@ -1,0 +1,62 @@
+swagger: '2.0'
+basePath: '/v2'
+info:
+  version: 0.0.1
+  title: Doctor service
+  description: This service aim to search the information of doctors.
+host: api.dpmain.au
+schemes: 
+  - http
+  - https
+consumes: 
+  - application/json
+  - application/xml
+produces: 
+  - application/json
+  - application/xml
+paths:
+  /getall:
+    get:
+      summary: All doctors
+      description: get all information of doctors
+      responses:
+        200:
+          description: Ok here is all the doctors
+          schema:
+            $ref: '#/definitions/doctors'
+  /getadoctor:
+    get:
+      summary: All doctors
+      description: get all information of doctors
+      parameters:
+        - name: "Doctorname"
+          in: "query"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: Ok here is the time avaliable
+          schema:
+            $ref: '#/definitions/doctor'
+    
+definitions:
+  doctor:
+    type: object
+    properties:
+      name:
+        type: string
+        example: "Cris Wu"
+      location:
+        type: string
+        example: "2nd Floor"
+      level:
+        type: string
+        example: "GP"
+  doctors:
+    type: array
+    items:
+      $ref: '#/definitions/doctor'
+      
+    
+            
+    

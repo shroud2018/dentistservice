@@ -1,0 +1,91 @@
+swagger: '2.0'
+basePath: '/v2'
+info:
+  version: 0.0.1
+  title: Time solt service
+  description: This service aim to manage the time of doctor.
+host: api.dpmain.au
+schemes: 
+  - http
+  - https
+consumes: 
+  - application/json
+  - application/xml
+produces: 
+  - application/json
+  - application/xml
+paths:
+  /reverse:
+    post:
+      summary: Reverse
+      parameters:
+        - in: body
+          name: timetalbe
+          schema:
+            $ref: '#/definitions/timetable'
+              
+      responses:
+        200:
+          description: Reverse succeed
+    get:
+      summary: Time avaliable
+      description: get all the avaliable time
+      responses: 
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/timetable1'
+  /doctor_avaliable:
+    get:
+      summary: Time avaliable for doctor
+      description: get all the avaliable time for a doctor
+      parameters:
+        - name: "Doctorname"
+          in: "query"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: Ok here is the time avaliable
+          schema:
+            $ref: '#/definitions/timetable1'
+    
+  /cancel: 
+    post:
+      summary: Cancel
+      parameters:
+        - in: body
+          name: student
+          schema:
+            $ref: '#/definitions/timetable'
+              
+      responses:
+        200:
+          description: OK Reverse have been cancel
+
+        
+    
+definitions:
+  timetable:
+    type: object
+    properties:
+      name:
+        type: string
+        example: "Cris Wu"
+      time:
+        type: string
+        example: "10:00"
+  doctor:
+    type: object
+    properties:
+      name:
+        type: string
+        example: "Cris Wu"
+  timetable1:
+    type: array
+    items:
+      $ref: '#/definitions/timetable'
+      
+    
+            
+    

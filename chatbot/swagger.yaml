@@ -1,0 +1,39 @@
+swagger: '2.0'
+basePath: '/v2'
+info:
+  version: 0.0.1
+  title: Chatbot
+  description: This service aim to manage the course.
+host: api.dpmain.au
+schemes: 
+  - http
+  - https
+consumes: 
+  - application/json
+  - application/xml
+produces: 
+  - application/json
+  - application/xml
+paths:
+  /ask:
+    post:
+      summary: create a student
+      parameters:
+        - in: body
+          name: student
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              answer:
+                type: string
+    
+            
+    
